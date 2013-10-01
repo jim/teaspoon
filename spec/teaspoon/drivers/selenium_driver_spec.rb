@@ -26,8 +26,13 @@ describe Teaspoon::Drivers::SeleniumDriver do
     end
 
     it "loads firefox for the webdriver" do
-      Selenium::WebDriver.should_receive(:for).with(:firefox)
+      Selenium::WebDriver.should_receive(:for).with(:firefox, {})
       subject.run_specs(:default, "_url_")
+    end
+
+    it "provided options passed into runner" do
+      Selenium::WebDriver.should_receive(:for).with(:firefox, {port: '345'})
+      subject.run_specs(:default, "_url_", "--port=345")
     end
 
     it "navigates to the correct url" do
