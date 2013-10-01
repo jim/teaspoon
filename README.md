@@ -412,7 +412,8 @@ These configuration directives are applicable only when running via the rake tas
 </dd>
 
 <dt> driver_cli_options </dt><dd>
-  An experimental feature to allow you to specify additional CLI options/switches. Currently this is only supported if using the 'phantomjs' driver.<br/><br/>
+  An experimental feature to allow you to specify additional CLI options/switches to drivers. When using phantomjs, the options are passed along to the driver. When using 
+  selenium, the options are converted to a hash with symbol keys, which is passed to the selenium-webdriver driver creation.<br/><br/>
 
   Check this wiki article for information about <a href="https://github.com/ariya/phantomjs/wiki/API-Reference#command-line-options">PhantomJS Command-line Options</a>. Some options may cause Teaspoon to fail to function as expected/may not produce the expected result or may conflict with other options.<br/><br/>
 

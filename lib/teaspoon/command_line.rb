@@ -38,7 +38,8 @@ module Teaspoon
 
         parser.on("-o", "--driver-cli-options OPTIONS", "Specify driver-specific options string to pass into the driver, e.g.",
                         "  '--ssl-protocol=any --ssl-certificates-path=/path/to/certs' could be used for phantomjs",
-                        "  Currently driver CLI options are only supported for phantomjs. It will be ignored if using the selenium driver.") do |driver_cli_options|
+                        "  Currently driver CLI options are passed along to phantomjs and converted to a hash",
+                        "  for selenium-webdriver ruby gem.") do |driver_cli_options|
           @options[:driver_cli_options] = driver_cli_options
         end
 
