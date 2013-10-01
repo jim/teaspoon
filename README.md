@@ -1,11 +1,12 @@
-Teaspoon
-========
-[![Build Status](https://travis-ci.org/modeset/teaspoon.png)](https://travis-ci.org/modeset/teaspoon)
-[![Code Climate](https://codeclimate.com/github/modeset/teaspoon.png)](https://codeclimate.com/github/modeset/teaspoon)
+### ![Logo by Morgan Keys](https://raw.github.com/modeset/teaspoon/master/screenshots/logo.png)
+
+[![Build Status](https://travis-ci.org/modeset/teaspoon.png)](https://travis-ci.org/modeset/teaspoon) [![Code Climate](https://codeclimate.com/github/modeset/teaspoon.png)](https://codeclimate.com/github/modeset/teaspoon)
+
+<sup>Logo by [Morgan Keys](http://www.morganrkeys.com/)</sup>
 
 Teaspoon is a Javascript test runner built on top of Rails. It can run tests in the browser, or headlessly using PhantomJS or with Selenium WebDriver.
 
-Its objective is to be the simplest, while also being the most complete Javascript testing solution for Rails. It takes full advantage of the asset pipeline and ships with support for Jasmine, Mocha, QUnit, and (experiementally) Angular.
+Its objective is to be the simplest, while also being the most complete Javascript testing solution for Rails. It takes full advantage of the asset pipeline and ships with support for Jasmine, Mocha, QUnit, and (experimentally) Angular.
 
 Ok, another Javascript test runner, right? Really? Yeah, that's tough, but we're pretty confident Teaspoon is one of the nicest and most full featured you'll find at the moment. And if you disagree, let us know and we'll probably fix whatever it is that you didn't like.
 
@@ -15,7 +16,7 @@ If you'd like to use Teaspoon with [Guard](https://github.com/guard/guard), chec
 
 ### Developer Notice:
 
-Teabag has been renamed to Teaspoon, thanks to [bigtunacan](https://github.com/bigtunacan).
+Teabag has been renamed to Teaspoon.
 
 This means you should change your gemspec to point to "teaspoon". A deprecation notice was provided with the last release of the gem under the teabag name, and versions will continue to move forward from 0.7.3.
 
@@ -89,8 +90,14 @@ You can focus tests in various ways, and Teaspoon provides an interface to run f
 
 ### Rake
 
+The rake task provides several ways of foucusing tests. You can specify the suite to run, the files to run, and/or directories to run.
+
 ```
 rake teaspoon suite=my_fantastic_suite
+rake teaspoon files=test/javascripts/controllers/my_controller_test.js
+rake teaspoon files=test/javascripts/integration,test/javascripts/models
+rake teaspoon files=test/javascripts/integration,test/javascripts/models,test/javascripts/controllers/my_controller_test.js
+rake teaspoon suite=my_fantastic_suite files=test/javascripts/integration,test/javascripts/models,test/javascripts/controllers/my_controller_test.js
 ```
 
 ### Command Line Interface
@@ -101,11 +108,12 @@ The command line interface requires a `teaspoon_env.rb` file that you can get by
 bundle exec teaspoon
 ```
 
-The CLI provides several ways of focusing tests. You can specify the suite to run, the files to run, and a filter.
+The CLI provides several ways of focusing tests. You can specify the suite to run, the files to run, directories to run, and a filter.
 
 ```
 bundle exec teaspoon --suite=my_fantastic_suite
 bundle exec teaspoon spec/javascripts/calculator_spec.js
+bundle exec teaspoon spec/javascripts/integration
 bundle exec teaspoon --filter="Calculator should add two digits"
 ```
 
@@ -527,8 +535,18 @@ These configuration directives are applicable only when running via the rake tas
   </ul>
 </dd>
 
-</dl>
+<dt> coverage_output_dir </dt><dd>
+  Specify directory where coverage reports should be generated.<br/><br/>
 
+  <b>default:</b> <code>"coverage"</code>
+
+  <ul>
+    <li>CLI: -O, --coverage-output-dir DIR</li>
+    <li>ENV: COVERAGE_OUTPUT_DIR=coverage</li>
+  </ul>
+</dd>
+
+</dl>
 
 ## Test Frameworks
 
